@@ -1,6 +1,8 @@
 import { Card } from '@/components/ui/card';
 import { Play, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import AddToPlaylistDialog from './AddToPlaylistDialog';
+import { Button } from './ui/button';
 
 interface VideoCardProps {
   id: string;
@@ -46,7 +48,7 @@ const VideoCard = ({ id, title, description, thumbnailUrl, views, teacherName, c
             {description}
           </p>
         )}
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
           <div className="flex items-center space-x-1">
             <Eye className="h-3 w-3" />
             <span>{views} views</span>
@@ -55,8 +57,19 @@ const VideoCard = ({ id, title, description, thumbnailUrl, views, teacherName, c
             <span className="text-primary">{teacherName}</span>
           )}
         </div>
-        <div className="text-xs text-muted-foreground mt-1">
+        <div className="text-xs text-muted-foreground mb-3">
           {new Date(createdAt).toLocaleDateString()}
+        </div>
+        <div onClick={(e) => e.stopPropagation()}>
+          <AddToPlaylistDialog 
+            videoId={id}
+            trigger={
+              <Button variant="outline" size="sm" className="w-full">
+                <Play className="h-3 w-3 mr-2" />
+                Add to Playlist
+              </Button>
+            }
+          />
         </div>
       </div>
     </Card>

@@ -3,9 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import Navbar from '@/components/Navbar';
+import AddToPlaylistDialog from '@/components/AddToPlaylistDialog';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, Eye, ThumbsUp, Share2 } from 'lucide-react';
+import { Loader2, Eye, ThumbsUp, Share2, ListPlus } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface Video {
@@ -139,6 +140,15 @@ const Watch = () => {
               </div>
 
               <div className="flex items-center space-x-2">
+                <AddToPlaylistDialog 
+                  videoId={video.id}
+                  trigger={
+                    <Button variant="ghost" size="sm">
+                      <ListPlus className="h-4 w-4 mr-2" />
+                      Save
+                    </Button>
+                  }
+                />
                 <Button variant="ghost" size="sm">
                   <ThumbsUp className="h-4 w-4 mr-2" />
                   Like

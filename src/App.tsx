@@ -12,6 +12,7 @@ import MyVideos from "./pages/MyVideos";
 import Watch from "./pages/Watch";
 import History from "./pages/History";
 import Playlists from "./pages/Playlists";
+import PlaylistDetail from "./pages/PlaylistDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/watch/:id" element={<Watch />} />
             <Route path="/history" element={<History />} />
             <Route path="/playlists" element={<Playlists />} />
+            <Route path="/playlist/:id" element={<PlaylistDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
